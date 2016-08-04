@@ -1,7 +1,7 @@
 import requests
 import os
 
-from wsgi import app
+from settings import app
 
 
 @app.route('/movies/')
