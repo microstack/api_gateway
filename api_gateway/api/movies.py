@@ -19,10 +19,12 @@ class BaseForAPIGW():
         text = response.text
         return text
 
+
 class MovieList(BaseForAPIGW, Resource):
     def get(self):
         resource = '/movies/'
-        return 'wow'
+        text = self.response_text_from_request(resource)
+        return text
 
 
 def add_resources(api):
