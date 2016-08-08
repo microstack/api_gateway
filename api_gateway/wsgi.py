@@ -1,8 +1,6 @@
 import os
 
-from views import app
-
+from api.settings import app
 
 if __name__ == '__main__':
-    port = os.environ.get('API_GW_PORT')
-    app.run(port=port)
+    app.run()
