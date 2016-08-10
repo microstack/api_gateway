@@ -7,3 +7,4 @@ import os
 
 # ex :) MOVIES_BACKEND_BASE_URL = 'http://localhost:8080'
 MOVIES_BASE_URL = os.environ.get('MOVIES_BASE_URL')
+POLITICS_BASE_URL = os.environ.get('POLITICS_BASE_URL')

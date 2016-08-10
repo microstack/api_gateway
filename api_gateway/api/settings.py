@@ -5,6 +5,8 @@ app = Flask(__name__)
 api = Api(app)
 
 
-from .movies import MovieList, add_resources
+from . import movies
+from . import politics
 
-api = add_resources(api)
+api = movies.add_resources(api)
+api = politics.add_resources(api)
