@@ -14,15 +14,25 @@ from api_gateway.settings import POLITICS_BASE_URL
 class BaseForPoliticsAPIGW(BaseForAPIGW):
     def __init__(self):
         self.base_url = POLITICS_BASE_URL
+        self.api_query = '?api_key=test'
 
 
 class BillList(BaseForPoliticsAPIGW, Resource):
     def get(self):
-        resource = '/bill/?api_key=test'
-        text = self.response_text_from_request(resource)
+        resource = '/bill/'
+        text = self.response_text_from_request(resource+self.api_query)
+        return text
+
+
+class BillDetail(BaseForPoliticsAPIGW, Resource):
+    def get(self, id):
+        resource = '/bill/%d' % id
+        text = self.response_text_from_request(resource+self.api_query)
         return text
 
 
 def add_resources(api):
     api.add_resource(BillList, '/bills/')
+    api.add_resource(BillDetail, '/bills/<int:id>/')
+
     return api
