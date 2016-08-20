@@ -1,4 +1,5 @@
 import requests
+import json
 
 
 class BaseForAPIGW():
@@ -17,4 +18,5 @@ class BaseForAPIGW():
             return 'Statuscode : {0}'.format(response.status_code)
 
         text = response.text
-        return text
+        objects = json.loads(text)
+        return objects

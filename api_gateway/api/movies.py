@@ -20,15 +20,15 @@ class BaseForMoviesAPIGW(BaseForAPIGW):
 class MovieList(BaseForMoviesAPIGW, Resource):
     def get(self):
         resource = '/movies/'
-        text = self.response_text_from_request(resource)
+        objects = self.response_text_from_request(resource)
         return text
 
 
 class MoviesLatest(BaseForMoviesAPIGW, Resource):
     def get(self):
         resource = '/movies/latest/'
-        text = self.response_text_from_request(resource)
-        return text
+        objects = self.response_text_from_request(resource)
+        return objects
 
 
 def add_resources(api):
