@@ -24,6 +24,14 @@ class MovieList(BaseForMoviesAPIGW, Resource):
         return text
 
 
+class MoviesLatest(BaseForMoviesAPIGW, Resource):
+    def get(self):
+        resource = '/movies/latest/'
+        text = self.response_text_from_request(resource)
+        return text
+
+
 def add_resources(api):
     api.add_resource(MovieList, '/movies/')
+    api.add_resource(MoviesLatest, '/movies/latest/')
     return api
