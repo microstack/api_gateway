@@ -21,7 +21,7 @@ class MovieList(BaseForMoviesAPIGW, Resource):
     def get(self):
         resource = '/movies/'
         objects = self.response_text_from_request(resource)
-        return text
+        return objects
 
 
 class MoviesLatest(BaseForMoviesAPIGW, Resource):
@@ -38,9 +38,25 @@ class MoviesHighGrade(BaseForMoviesAPIGW, Resource):
         return objects
 
 
+class GenreList(BaseForMoviesAPIGW, Resource):
+    def get(self):
+        resource = '/movies/genres/'
+        objects = self.response_text_from_request(resource)
+        return objects
+
+   
+class GenreMovieList(BaseForMoviesAPIGW, Resource):
+    def get(self, name):
+        resource = '/movies/genres/%s/' % name
+        objects = self.response_text_from_request(resource)
+        return objects
+
+
 def add_resources(api):
     api.add_resource(MovieList, '/movies/')
     api.add_resource(MoviesLatest, '/movies/latest/')
     api.add_resource(MoviesHighGrade, '/movies/grade/')
+    api.add_resource(GenreList, '/movies/genres/')
+    api.add_resource(GenreMovieList, '/movies/genres/<string:name>/')
     
     return api
