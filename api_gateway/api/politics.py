@@ -27,7 +27,7 @@ class BillList(BaseForPoliticsAPIGW, Resource):
 
 class BillDetail(BaseForPoliticsAPIGW, Resource):
     def get(self, id):
-        resource = '/bill/%d' % id
+        resource = '/bill/%d/' % id
         text = self.response_text_from_request(resource)
         return text
 
