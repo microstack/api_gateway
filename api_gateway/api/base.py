@@ -9,14 +9,18 @@ class BaseForAPIGW():
 
     def response_text_from_request(self, resource):
         request_url = self.base_url + resource + self.api_key_query
+
         try:
             response = requests.get(request_url)
         except requests.ConnectionError:
-            return 'ConnectionError'
+            objects = {'error': 'ConnectionError'}
+            return objects
 
         if response.status_code != 200:
-            return 'Statuscode : {0}'.format(response.status_code)
+            objects = {'error': 'Statuscode : %s' % response.status_code}
+            return objects
 
         text = response.text
         objects = json.loads(text)
+
         return objects

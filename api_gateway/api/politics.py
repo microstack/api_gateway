@@ -27,7 +27,7 @@ class BillList(BaseForPoliticsAPIGW, Resource):
 
 class BillDetail(BaseForPoliticsAPIGW, Resource):
     def get(self, id):
-        resource = '/bill/%d' % id
+        resource = '/bill/%s' % id
         text = self.response_text_from_request(resource)
         return text
 
@@ -35,6 +35,6 @@ class BillDetail(BaseForPoliticsAPIGW, Resource):
 def add_resources(api):
     service_prefix = '/politics'
     api.add_resource(BillList, service_prefix +'/bill/')
-    api.add_resource(BillDetail, service_prefix + '/bill/<int:id>/')
+    api.add_resource(BillDetail, service_prefix + '/bill/<string:id>/')
 
     return api
