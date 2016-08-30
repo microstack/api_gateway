@@ -24,7 +24,15 @@ class TodayWeather(BaseForMoviesAPIGW, Resource):
         return objects
 
 
+class SpecificDayWeather(BaseForMoviesAPIGW, Resource):
+    def get(self, date):
+        resource = '/weather/publishes/%s/weather/' % date
+        objects = self.response_text_from_request(resource)
+        return objects
+
+
 def add_resources(api):
     api.add_resource(TodayWeather, '/weather/today/')
+    api.add_resource(SpecificDayWeather, '/weather/<string:date>/')
     
     return api
