@@ -7,6 +7,9 @@ api = Api(app)
 
 from . import movies
 from . import politics
+from . import weather
+
 
 api = movies.add_resources(api)
 api = politics.add_resources(api)
+api = weather.add_resources(api)
