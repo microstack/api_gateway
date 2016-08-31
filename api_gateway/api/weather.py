@@ -20,28 +20,28 @@ class BaseForMoviesAPIGW(BaseForAPIGW):
 class TodayWeather(BaseForMoviesAPIGW, Resource):
     def get(self):
         resource = '/weather/today/weather/'
-        objects = self.response_text_from_request(resource)
+        objects = self.get_object_from_request(resource)
         return objects
 
 
 class TodayPublish(BaseForMoviesAPIGW, Resource):
     def get(self):
         resource = '/weather/today/'
-        objects = self.response_text_from_request(resource)
+        objects = self.get_object_from_request(resource)
         return objects
 
 
 class SpecificDayWeather(BaseForMoviesAPIGW, Resource):
     def get(self, date):
         resource = '/weather/%s/weather/' % date
-        objects = self.response_text_from_request(resource)
+        objects = self.get_object_from_request(resource)
         return objects
 
 
 class SpecificDayPublish(BaseForMoviesAPIGW, Resource):
     def get(self, date):
         resource = '/weather/%s/' % date
-        objects = self.response_text_from_request(resource)
+        objects = self.get_object_from_request(resource)
         return objects
 
 
