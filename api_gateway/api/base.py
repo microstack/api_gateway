@@ -21,7 +21,7 @@ class BaseForAPIGW():
         try:
             response = requests.get(_get_request_url())
         except requests.ConnectionError:
-            text = '{"error": "ConnectionError"}'
+            text = '{"status": 500, "exception": "ConnectionError"}'
         else:
             text = response.text
 
