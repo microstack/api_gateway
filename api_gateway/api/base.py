@@ -27,9 +27,4 @@ class BaseForAPIGW():
 
         objects = json.loads(text)
 
-        if isinstance(objects, dict):
-            server_error_msg = objects.get("message")
-            if server_error_msg == "Internal Server Error":
-                objects = {"status": 500, "exception": server_error_msg}
-
         return objects
